@@ -1,0 +1,16 @@
+services:
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak
+    ports:
+      - "8181:8080"
+    environment:
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN_USERNAME}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+    networks:
+      - springboot-ai-keycloak-microservices
+    command:
+      - "start-dev"
+networks:
+  springboot-ai-keycloak-microservices:
+    driver: bridge
